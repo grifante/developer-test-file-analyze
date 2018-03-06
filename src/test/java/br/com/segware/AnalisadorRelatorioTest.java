@@ -4,6 +4,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +14,11 @@ public class AnalisadorRelatorioTest {
 
     IAnalisadorRelatorio analisador;
 
-    @Before
-    public void before() throws IOException {
-        // analisador = sua implementação
-    }
+	@Before
+	public void before() throws IOException {
+		Path csv = Paths.get(getClass().getResource("relatorio.csv").getPath());
+		analisador = new AnalizadorCSV(csv);
+	}
 
     @Test
     public void totalDeEventosDoCliente0001() {
